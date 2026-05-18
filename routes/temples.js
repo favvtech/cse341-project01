@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
-const contactsController = require('../controllers/contacts');
+const templesController = require('../controllers/temples');
 
-// #swagger.tags = ['Contacts']
-// #swagger.summary = 'Get all contacts'
-// #swagger.description = 'Returns every contact document from the contacts collection in MongoDB.'
+// #swagger.tags = ['Temples']
+// #swagger.summary = 'Get all temples'
+// #swagger.description = 'Returns every temple document from the temples collection in MongoDB.'
 /* #swagger.responses[200] = {
-        description: 'List of contacts',
+        description: 'List of temples',
         content: { 'application/json': { schema: { type: 'array' } } }
    }
    #swagger.responses[500] = { description: 'Server error' }
 */
-router.get('/', contactsController.getAll);
+router.get('/', templesController.getAll);
 
-// #swagger.tags = ['Contacts']
-// #swagger.summary = 'Get one contact by MongoDB ObjectId'
-// #swagger.description = 'Returns a single contact matching the _id in the URL path.'
+// #swagger.tags = ['Temples']
+// #swagger.summary = 'Get one temple by MongoDB ObjectId'
+// #swagger.description = 'Returns a single temple matching the _id in the URL path.'
 /* #swagger.parameters['id'] = {
         in: 'path',
         description: 'MongoDB ObjectId (24 hex characters)',
@@ -24,13 +24,13 @@ router.get('/', contactsController.getAll);
         type: 'string'
    }
    #swagger.responses[200] = {
-        description: 'Contact found',
+        description: 'Temple found',
         content: { 'application/json': { schema: { type: 'object' } } }
    }
    #swagger.responses[400] = { description: 'Invalid ObjectId' }
-   #swagger.responses[404] = { description: 'Contact not found' }
+   #swagger.responses[404] = { description: 'Temple not found' }
    #swagger.responses[500] = { description: 'Server error' }
 */
-router.get('/:id', contactsController.getSingle);
+router.get('/:id', templesController.getSingle);
 
 module.exports = router;

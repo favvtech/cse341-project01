@@ -1,0 +1,135 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CSE341 Project API",
+    "description": "REST API for contacts and temples (MongoDB)",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Contacts",
+      "description": "Contact records in MongoDB"
+    },
+    {
+      "name": "Temples",
+      "description": "Temple records in MongoDB"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/contacts/": {
+      "get": {
+        "description": "Returns every contact document from the contacts collection.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of contacts"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Get all contacts"
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "description": "Returns a single contact by MongoDB ObjectId.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId (24 hex characters)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact found"
+          },
+          "400": {
+            "description": "Invalid ObjectId"
+          },
+          "404": {
+            "description": "Contact not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Get one contact by id"
+      }
+    },
+    "/temples/": {
+      "get": {
+        "description": "Returns every temple document from the temples collection.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of temples"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Temples"
+        ],
+        "summary": "Get all temples"
+      }
+    },
+    "/temples/{id}": {
+      "get": {
+        "description": "Returns a single temple by MongoDB ObjectId.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId (24 hex characters)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Temple found"
+          },
+          "400": {
+            "description": "Invalid ObjectId"
+          },
+          "404": {
+            "description": "Temple not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "tags": [
+          "Temples"
+        ],
+        "summary": "Get one temple by id"
+      }
+    }
+  }
+}
