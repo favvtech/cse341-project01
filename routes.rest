@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3000
+@contactId = paste-created-contact-id-here
+
+### Get all contacts
+GET {{baseUrl}}/contacts
+
+### Get one contact
+GET {{baseUrl}}/contacts/{{contactId}}
+
+### Create a new contact
+POST {{baseUrl}}/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Grace",
+  "lastName": "Hopper",
+  "email": "grace.hopper@example.com",
+  "favoriteColor": "navy",
+  "birthday": "1906-12-09"
+}
+
+### Update a contact
+PUT {{baseUrl}}/contacts/{{contactId}}
+Content-Type: application/json
+
+{
+  "firstName": "Grace",
+  "lastName": "Hopper",
+  "email": "grace.updated@example.com",
+  "favoriteColor": "purple",
+  "birthday": "1906-12-09"
+}
+
+### Delete a contact
+DELETE {{baseUrl}}/contacts/{{contactId}}
+
+### Get all temples
+GET {{baseUrl}}/temples
+
+### Get one temple
+GET {{baseUrl}}/temples/61a921f6028954d4f0319e6d

@@ -10,7 +10,19 @@ app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+const getSwaggerDocument = (req) => ({
+    ...swaggerDocument,
+    host: req.get('host'),
+    schemes: [req.get('x-forwarded-proto') || req.protocol],
+});
+
+app.get('/api-docs.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(getSwaggerDocument(req));
+});
+
+app.use('/api-docs', swaggerUi.serve);
+app.get('/api-docs', swaggerUi.setup(null, { swaggerOptions: { url: '/api-docs.json' } }));
 
 app.use('/', require('./routes'));
 

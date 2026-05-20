@@ -33,4 +33,19 @@ router.get('/', contactsController.getAll);
 */
 router.get('/:id', contactsController.getSingle);
 
+// #swagger.tags = ['Contacts']
+// #swagger.summary = 'Create a contact'
+// #swagger.description = 'Creates a new contact. All fields are required.'
+router.post('/', contactsController.createContact);
+
+// #swagger.tags = ['Contacts']
+// #swagger.summary = 'Update a contact'
+// #swagger.description = 'Updates a contact by MongoDB ObjectId. All fields are required.'
+router.put('/:id', contactsController.updateContact);
+
+// #swagger.tags = ['Contacts']
+// #swagger.summary = 'Delete a contact'
+// #swagger.description = 'Deletes a contact by MongoDB ObjectId.'
+router.delete('/:id', contactsController.deleteContact);
+
 module.exports = router;
